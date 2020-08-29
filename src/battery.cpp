@@ -30,8 +30,8 @@ float base_voltage;
 int initial_percent;
 int discharge_current;
 int recharge_current;
-int base_power_consuption;
-int motors_power_consuption;
+int base_power_consumption;
+int motors_power_consumption;
 int num_batteries;
 string cmd_vel_topic;
 bool verbose;
@@ -70,9 +70,9 @@ void cmd_vel_callback(const geometry_msgs::Twist::ConstPtr &msg)
         sqrt(msg->angular.x * msg->angular.x + msg->angular.y * msg->angular.y + msg->angular.z * msg->angular.z);
 
     if (linear > 0 || angular > 0)
-        discharge_rate = (motors_power_consuption + base_power_consuption) / (float)(60 * 60 * 1000);
+        discharge_rate = (motors_power_consumption + base_power_consumption) / (float)(60 * 60 * 1000);
     else
-        discharge_rate = base_power_consuption / (float)(60 * 60 * 1000);
+        discharge_rate = base_power_consumption / (float)(60 * 60 * 1000);
 }
 
 int main(int argc, char **argv)
@@ -88,8 +88,8 @@ int main(int argc, char **argv)
     n.param<int>("initial_percent", initial_percent, 100);
     n.param<int>("discharge_current", discharge_current, 7000);
     n.param<int>("recharge_current", recharge_current, 2400);
-    n.param<int>("base_power_consuption", base_power_consuption, 200);
-    n.param<int>("motors_power_consuption", motors_power_consuption, 5000);
+    n.param<int>("base_power_consumption", base_power_consumption, 200);
+    n.param<int>("motors_power_consumption", motors_power_consumption, 5000);
     n.param<int>("num_batteries", num_batteries, 1);
     n.param<string>("cmd_vel_topic", cmd_vel_topic, "cmd_vel");
     n.param<bool>("verbose", verbose, false);
@@ -169,15 +169,15 @@ int main(int argc, char **argv)
         ROS_INFO("Invalid recharge current (%d), fixing it", recharge_current);
         recharge_current = 0;
     }
-    if (base_power_consuption < 0)
+    if (base_power_consumption < 0)
     {
-        ROS_INFO("Invalid base power consuption (%d), fixing it", base_power_consuption);
-        base_power_consuption = 0;
+        ROS_INFO("Invalid base power consumption (%d), fixing it", base_power_consumption);
+        base_power_consumption = 0;
     }
-    if (motors_power_consuption < 0)
+    if (motors_power_consumption < 0)
     {
-        ROS_INFO("Invalid motors power consuption (%d), fixing it", motors_power_consuption);
-        motors_power_consuption = 0;
+        ROS_INFO("Invalid motors power consumption (%d), fixing it", motors_power_consumption);
+        motors_power_consumption = 0;
     }
     if (num_batteries < 1)
     {
@@ -243,8 +243,8 @@ int main(int argc, char **argv)
     ROS_INFO("Initial charge percent = %d%%", initial_percent);
     ROS_INFO("Discharge current = %dmAh", discharge_current);
     ROS_INFO("Recharge current = %dmAh", recharge_current);
-    ROS_INFO("Base power consuption = %dmAh", base_power_consuption);
-    ROS_INFO("Motors power consuption = %dmAh", motors_power_consuption);
+    ROS_INFO("Base power consumption = %dmAh", base_power_consumption);
+    ROS_INFO("Motors power consumption = %dmAh", motors_power_consumption);
     ROS_INFO("Number of batteries = %d", num_batteries);
     ROS_INFO("Velocity topic = %s", cmd_vel_topic.c_str());
     ROS_INFO("Equation = %s", eq.toString().c_str());
@@ -273,7 +273,7 @@ int main(int argc, char **argv)
     power = map_number(percent, 0, 100, 0, total_power);
 
     recharging = false;
-    discharge_rate = base_power_consuption / (float)(60 * 60 * 1000);
+    discharge_rate = base_power_consumption / (float)(60 * 60 * 1000);
     recharge_rate = 0;
 
     while (ros::ok())

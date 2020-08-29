@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<launch>
-	<include file="$(find battery_simulator)/launch/battery.launch" />
-	<!-- Requires rqt_multiplot package: https://github.com/ANYbotics/rqt_multiplot_plugin -->
-	<node name="rqt_multiplot" pkg="rqt_multiplot" type="rqt_multiplot" args="--force-discover --multiplot-config $(find battery_simulator)/config/rqt_multiplot.xml --multiplot-run-all" />
-</launch>

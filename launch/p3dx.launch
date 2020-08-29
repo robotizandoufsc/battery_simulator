@@ -19,9 +19,9 @@
 		<!-- Max current the charger can provide (milliamps hour), default = 2400 -->
 		<param name="recharge_current" value="2400" />
 		<!-- Current required by the robot base without the motors (milliamps hour), default = 200 -->
-		<param name="base_power_consuption" value="200" />
+		<param name="base_power_consumption" value="200" />
 		<!-- Current required by the robot motors (milliamps hour), default = 5000 -->
-		<param name="motors_power_consuption" value="5000" />
+		<param name="motors_power_consumption" value="5000" />
 		<!-- Number of batteries of the robot (connected in parallel), default = 1 -->
 		<param name="num_batteries" value="3" />
 		<!-- The velocity topic of the robot (geometry_msgs/Twist), default = cmd_vel -->

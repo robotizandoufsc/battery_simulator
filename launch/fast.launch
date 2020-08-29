@@ -19,9 +19,9 @@
 		<!-- Max current the charger can provide (milliamps hour), default = 2400 -->
 		<param name="recharge_current" value="520000" />
 		<!-- Current required by the robot base without the motors (milliamps hour), default = 200 -->
-		<param name="base_power_consuption" value="420000" />
+		<param name="base_power_consumption" value="420000" />
 		<!-- Current required by the robot motors (milliamps hour), default = 5000 -->
-		<param name="motors_power_consuption" value="12600000" />
+		<param name="motors_power_consumption" value="12600000" />
 		<!-- Number of batteries of the robot (connected in parallel), default = 1 -->
 		<param name="num_batteries" value="1" />
 		<!-- The velocity topic of the robot (geometry_msgs/Twist), default = cmd_vel -->
@@ -29,4 +29,6 @@
 		<!-- Prints battery info at every second, default = false -->
 		<param name="verbose" value="true" />
 	</node>
+	<!-- Requires rqt_multiplot package: https://github.com/ANYbotics/rqt_multiplot_plugin -->
+	<node name="rqt_multiplot" pkg="rqt_multiplot" type="rqt_multiplot" args="--force-discover --multiplot-config $(find battery_simulator)/config/rqt_multiplot.xml --multiplot-run-all" />
 </launch>
