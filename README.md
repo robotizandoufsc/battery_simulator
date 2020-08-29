@@ -79,3 +79,7 @@ The node also subscribes to the following topics:
 
 ## TO-DO
 - [ ] Better models for the battery
+
+## Screenshots
+#### Fast battery example
+![Fast battery example](doc/plot.png "Fast battery example")
