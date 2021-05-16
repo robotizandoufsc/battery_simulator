@@ -260,7 +260,7 @@ int main(int argc, char **argv)
     // The voltage publisher
     ros::Publisher voltage_pub = n.advertise<std_msgs::Float32>("voltage", 1);
     // The percent publisher
-    ros::Publisher percent_pub = n.advertise<std_msgs::Int32>("percent", 1);
+    ros::Publisher percent_pub = n.advertise<std_msgs::Float32>("percent", 1);
     // The percent publisher
     ros::Publisher recharging_pub = n.advertise<std_msgs::Bool>("recharging", 1);
     // The recharge subscriber
@@ -300,7 +300,7 @@ int main(int argc, char **argv)
             ROS_INFO("Recharge rate = %fmAs", (recharge_rate * 1000));
             ROS_INFO("Power = %dWh", (int)power);
             ROS_INFO("Voltage = %fV", voltage);
-            ROS_INFO("Percent = %d%%", (int)percent);
+            ROS_INFO("Percent = %d%%", percent);
         }
 
         std_msgs::Int32 power_msg;
@@ -309,7 +309,7 @@ int main(int argc, char **argv)
         std_msgs::Float32 voltage_msg;
         voltage_msg.data = voltage;
 
-        std_msgs::Int32 percent_msg;
+        std_msgs::Float32 percent_msg;
         percent_msg.data = percent;
 
         std_msgs::Bool recharging_msg;
