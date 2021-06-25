@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
 	<node pkg="battery_simulator" type="battery" name="battery" output="screen">
-		<!-- This node publishes to the topics power (Int32), voltage (Float32), percent (Float32) and recharging (Bool) -->
+		<!-- This node publishes to the topics power (Int32), voltage (Float32), percent (Int32) and recharging (Bool) -->
 		<!-- This node subscribes to the topic recharge (Bool) -->
 		<!-- Battery discharge model (exponential, linear, inverse), default = exponential -->
 		<!-- Reference: https://batteryuniversity.com/learn/article/discharge_methods -->

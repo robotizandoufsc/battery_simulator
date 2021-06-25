@@ -278,8 +278,10 @@ int main(int argc, char **argv)
 
     while (ros::ok())
     {
+
         power -= discharge_rate * base_voltage;
         power += recharge_rate * base_voltage;
+
         if (power > total_power)
             power = total_power;
         else if (power < 0)
@@ -300,7 +302,7 @@ int main(int argc, char **argv)
             ROS_INFO("Recharge rate = %fmAs", (recharge_rate * 1000));
             ROS_INFO("Power = %dWh", (int)power);
             ROS_INFO("Voltage = %fV", voltage);
-            ROS_INFO("Percent = %d%%", percent);
+            ROS_INFO("Percent = %f%%", percent);
         }
 
         std_msgs::Int32 power_msg;
